@@ -21,15 +21,21 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `, mySprite, 0, -50)
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprites.destroy(mySprite2)
+})
 controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
-    sprites.destroyAllSpritesOfKind(SpriteKind.Meteorit)
+	
 })
 let projectile: Sprite = null
 let mySprite: Sprite = null
-let mySprite2 = sprites.create(assets.image`Meteorit`, SpriteKind.Meteorit)
+let mySprite2: Sprite = null
+mySprite2 = sprites.create(assets.image`Meteorit`, SpriteKind.Meteorit)
 mySprite = sprites.create(assets.image`Nau`, SpriteKind.Player)
 mySprite2.setPosition(19, 10)
 controller.moveSprite(mySprite)
+mySprite.setStayInScreen(true)
+mySprite2.setKind(SpriteKind.Enemy)
 scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
@@ -152,4 +158,4 @@ scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888188888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     `)
-mySprite.setStayInScreen(true)
+mySprite2.x += randint(0, scene.screenWidth())
