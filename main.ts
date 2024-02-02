@@ -28,7 +28,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
     scene.cameraShake(4, 500)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    sprites.destroy(mySprite2, effects.fire, 1000)
+    sprites.destroy(mySprite2)
     sprites.destroy(projectile, effects.fire, 500)
     info.changeScoreBy(1)
 })
@@ -162,7 +162,7 @@ scene.setBackgroundImage(img`
     8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
     `)
 mySprite.setStayInScreen(true)
-info.setLife(3)
+info.setLife(5)
 info.setScore(0)
 game.onUpdateInterval(1000, function () {
     mySprite2 = sprites.createProjectileFromSide(assets.image`Meteorit`, 0, 50)
